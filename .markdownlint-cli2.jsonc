@@ -1,0 +1,32 @@
+{
+  // TürkOSDev markdown biçim kuralları.
+  // Kural adları: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  "config": {
+    "default": true,
+
+    // Satır uzunluğu sınırlanmaz: Türkçe metinde zorlamalı satır kırma
+    // diff'leri okunmaz hale getiriyor.
+    "MD013": false,
+
+    // Aynı başlık farklı bölümlerin altında tekrar edebilir
+    // (örneğin her notta "Kaynaklar").
+    "MD024": { "siblings_only": true },
+
+    // Notlarda diyagram veya tablo için sınırlı HTML kullanılabilir.
+    "MD033": { "allowed_elements": ["br", "sub", "sup", "kbd", "img", "details", "summary"] },
+
+    // Sıralı listelerde 1. 2. 3. yazımı serbest.
+    "MD029": { "style": "ordered" },
+
+    // Dosya, tek bir birinci seviye başlıkla başlar.
+    "MD041": true,
+
+    // Kod bloklarında dil belirtilmesi zorunludur.
+    "MD040": true,
+
+    // Noktalama ile biten başlıklara izin verilmez, soru işareti hariç.
+    "MD026": { "punctuation": ".,;:!" }
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**", ".github/**"]
+}

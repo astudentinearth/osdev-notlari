@@ -1,0 +1,64 @@
+name: Kontrol
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bicim:
+    name: Markdown biçim denetimi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+
+  dosya-adlari:
+    name: Dosya adı kuralları
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dosya adlarını denetle
+        run: |
+          hata=0
+          while IFS= read -r dosya; do
+            ad=$(basename "$dosya")
+            case "$ad" in
+              README.md|CONTRIBUTING.md|CODE_OF_CONDUCT.md|SABLON.md|TERIMLER.md|LICENSE.md)
+                continue
+                ;;
+            esac
+            if ! printf '%s' "$ad" | grep -qE '^[a-z0-9]+(-[a-z0-9]+)*\.md$'; then
+              echo "::error file=$dosya::Dosya adı kurallara uymuyor. Yalnızca küçük harf, rakam ve tire kullanın; Türkçe karakter kullanmayın."
+              hata=1
+            fi
+          done < <(git ls-files '*.md' | grep -v '^\.github/')
+          exit $hata
+
+  baglantilar:
+    name: Bağlantı denetimi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bağlantıları denetle
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude-mail
+            --max-retries 2
+            --accept 200,206,403,429
+            "**/*.md"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
