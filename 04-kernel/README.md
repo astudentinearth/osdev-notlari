@@ -19,7 +19,7 @@ Bu bölüm, kernel'in donanımla kurduğu sözleşmeyi anlatır. Bellek yönetim
 | TSS ve kernel stack'leri (IST) | `tss.md` | ⬜ |
 | PIC (8259) | `pic.md` | ⬜ |
 | APIC ve IOAPIC | `apic.md` | ⬜ |
-| Zamanlayıcılar: PIT, HPET, APIC timer, TSC | `timerlar.md` | ⬜ |
+| Timer'lar: PIT, HPET, APIC timer, TSC | `timerlar.md` | ⬜ |
 | System call mekanizmaları (int 0x80, syscall/sysret) | `system-calllar.md` | ⬜ |
 | Senkronizasyon: spinlock, mutex, atomik işlemler | `senkronizasyon.md` | ⬜ |
 | SMP ve çekirdeklerin başlatılması | `smp.md` | ⬜ |
