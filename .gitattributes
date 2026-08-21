@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+*.md   text diff=markdown
+*.yml  text
+*.jsonc text
+
+*.png  binary
+*.jpg  binary
+*.pdf  binary
