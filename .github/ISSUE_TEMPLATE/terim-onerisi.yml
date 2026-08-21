@@ -1,0 +1,57 @@
+name: Terim önerisi
+description: Sözlüğe terim ekleyin veya mevcut bir terim kararını tartışmaya açın
+title: "[terim]: "
+labels: ["terim"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Terim kararları repository genelini etkiler. Bir karar değişirse tüm notlar birlikte güncellenir,
+        bu yüzden değişiklik önerilerinin gerekçelendirilmesi önemlidir.
+
+        Önce [TERIMLER.md](https://github.com/TurkOsdev/osdev-notlari/blob/main/TERIMLER.md) dosyasına bakın.
+
+  - type: input
+    id: terim
+    attributes:
+      label: Terim (İngilizce)
+      placeholder: "translation lookaside buffer"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tur
+    attributes:
+      label: Öneri türü
+      options:
+        - "Sözlükte yok, eklenmeli"
+        - "Sözlükteki karar değişmeli"
+        - "Sözlükteki karşılık yanlış / eksik"
+    validations:
+      required: true
+
+  - type: input
+    id: onerilen
+    attributes:
+      label: Önerilen kullanım
+      description: Türkçe karşılık veya "İngilizce bırakılsın"
+    validations:
+      required: true
+
+  - type: textarea
+    id: gerekce
+    attributes:
+      label: Gerekçe
+      description: |
+        Neden bu kullanım? Öneriniz aranabilirliği nasıl etkiliyor?
+        Başka bir terimle karışma ihtimali var mı?
+    validations:
+      required: true
+
+  - type: textarea
+    id: kullanim
+    attributes:
+      label: Yaygın kullanım örnekleri
+      description: Türkçe teknik kaynaklarda, akademik yayınlarda veya toplulukta nasıl geçtiğine dair örnekler
+    validations:
+      required: false

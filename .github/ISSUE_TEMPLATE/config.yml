@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Katkı rehberi
+    url: https://github.com/TurkOsdev/osdev-notlari/blob/main/CONTRIBUTING.md
+    about: Katkı süreci, içerik standartları ve pull request kuralları
+  - name: Terimler sözlüğü
+    url: https://github.com/TurkOsdev/osdev-notlari/blob/main/TERIMLER.md
+    about: Hangi terimin Türkçe, hangisinin İngilizce kullanıldığı
+  - name: Not şablonu
+    url: https://github.com/TurkOsdev/osdev-notlari/blob/main/SABLON.md
+    about: Yeni bir not yazarken takip edilecek yapı

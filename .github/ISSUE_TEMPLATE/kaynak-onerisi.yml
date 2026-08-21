@@ -1,0 +1,66 @@
+name: Kaynak önerisi
+description: resources/ bölümüne kitap, spesifikasyon, makale, proje veya araç önerin
+title: "[kaynak]: "
+labels: ["kaynak"]
+body:
+  - type: input
+    id: ad
+    attributes:
+      label: Kaynağın adı
+      placeholder: "Operating Systems: Three Easy Pieces"
+    validations:
+      required: true
+
+  - type: input
+    id: baglanti
+    attributes:
+      label: Bağlantı
+      description: Varsa resmi bağlantı. Ücretsiz erişilebiliyorsa belirtin.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: tur
+    attributes:
+      label: Kaynak türü
+      options:
+        - "Kitap"
+        - "Mimari manual'ı"
+        - "Spesifikasyon / standart"
+        - "Makale veya akademik yayın"
+        - "Açık kaynak proje"
+        - "Araç (emülatör, debugger, toolchain)"
+        - "Ders veya video serisi"
+        - "Topluluk / forum"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: seviye
+    attributes:
+      label: Seviye
+      options:
+        - "Yeni başlayan"
+        - "Orta"
+        - "İleri"
+        - "Referans (baştan sona okunmaz)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: Ne kapsıyor, neden değerli?
+      description: |
+        Bir bağlantı tek başına yeterli değildir. Kaynağın hangi konuları ele aldığını
+        ve hangi durumda başvurulması gerektiğini kısaca yazın.
+    validations:
+      required: true
+
+  - type: input
+    id: dil
+    attributes:
+      label: Dil
+      placeholder: "İngilizce"
+    validations:
+      required: false

@@ -1,0 +1,88 @@
+name: Yeni not / konu
+description: Yeni bir not yazmayı önerin veya mevcut bir konuyu üstlenin
+title: "[konu]: "
+labels: ["yeni not"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Yazmadan önce issue açmanız, aynı konunun iki kişi tarafından yazılmasını önler.
+        Bölüm README'lerinde ⬜ ile işaretli konulardan birini seçebilir veya listede olmayan bir konu önerebilirsiniz.
+
+  - type: dropdown
+    id: bolum
+    attributes:
+      label: Bölüm
+      description: Notun gireceği bölüm
+      options:
+        - 00-giris
+        - 01-mimari
+        - 02-boot
+        - 03-assembly
+        - 04-kernel
+        - 05-memory
+        - 06-process
+        - 07-drivers
+        - 08-filesystems
+        - 09-userspace
+        - 10-networking
+        - 11-graphics
+        - resources
+        - Emin değilim
+    validations:
+      required: true
+
+  - type: input
+    id: konu
+    attributes:
+      label: Konu
+      description: Notun başlığı
+      placeholder: "Sayfa tablosu girdileri ve bayrakları"
+    validations:
+      required: true
+
+  - type: input
+    id: dosya
+    attributes:
+      label: Dosya adı
+      description: Küçük harf, tire, Türkçe karakter yok. Bölüm README'sinde planlanmış bir dosya ise aynı adı kullanın.
+      placeholder: "sayfa-tablosu-girdileri.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: kapsam
+    attributes:
+      label: Kapsam
+      description: Not neyi anlatacak, neyi anlatmayacak? Hangi mimariyi esas alacak?
+    validations:
+      required: true
+
+  - type: textarea
+    id: kaynaklar
+    attributes:
+      label: Kullanmayı düşündüğünüz kaynaklar
+      description: Mimari manual'ları, spesifikasyonlar veya diğer birincil kaynaklar
+    validations:
+      required: false
+
+  - type: dropdown
+    id: ustlenme
+    attributes:
+      label: Bu notu siz mi yazacaksınız?
+      options:
+        - "Evet, ben yazacağım"
+        - "Hayır, yalnızca öneriyorum"
+        - "Yardım gelirse yazabilirim"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: kontrol
+    attributes:
+      label: Kontrol
+      options:
+        - label: Bu konunun daha önce açılmış bir issue'su olmadığını kontrol ettim.
+          required: true
+        - label: "[CONTRIBUTING.md](https://github.com/TurkOsdev/osdev-notlari/blob/main/CONTRIBUTING.md) ve [SABLON.md](https://github.com/TurkOsdev/osdev-notlari/blob/main/SABLON.md) dosyalarını okudum."
+          required: true

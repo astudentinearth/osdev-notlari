@@ -1,0 +1,67 @@
+name: İçerik hatası
+description: Bir notta teknik hata, eksik veya yanlış açıklama bildirin
+title: "[hata]: "
+labels: ["hata"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Yanlış bilgi, eksik bilgiden daha zararlıdır. Bildiriminiz için teşekkürler.
+        Düzeltmeyi doğrudan yapmak isterseniz issue açmadan pull request de gönderebilirsiniz.
+
+  - type: input
+    id: dosya
+    attributes:
+      label: Dosya
+      description: Hatanın bulunduğu notun yolu
+      placeholder: "05-memory/paging.md"
+    validations:
+      required: true
+
+  - type: input
+    id: konum
+    attributes:
+      label: Konum
+      description: Başlık veya satır numarası
+      placeholder: "Sayfa tablosu bayrakları başlığı, üçüncü paragraf"
+    validations:
+      required: false
+
+  - type: textarea
+    id: hata
+    attributes:
+      label: Notta ne yazıyor?
+      description: Hatalı olduğunu düşündüğünüz ifadeyi kopyalayın.
+    validations:
+      required: true
+
+  - type: textarea
+    id: dogrusu
+    attributes:
+      label: Doğrusu ne olmalı?
+      description: Bildiğiniz doğru bilgiyi yazın. Emin değilseniz belirtin.
+    validations:
+      required: true
+
+  - type: textarea
+    id: kaynak
+    attributes:
+      label: Kaynak
+      description: |
+        Düzeltmeyi dayandırdığınız kaynak. Mimari manual'ı ise cilt ve bölüm bilgisini yazın.
+      placeholder: "Intel SDM, Cilt 3A, Bölüm 4.5"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: onem
+    attributes:
+      label: Hatanın türü
+      options:
+        - "Teknik hata (yanlış bilgi)"
+        - "Eksik bilgi"
+        - "Anlatım bozukluğu / belirsizlik"
+        - "Yazım veya biçim hatası"
+        - "Bozuk bağlantı"
+    validations:
+      required: true
