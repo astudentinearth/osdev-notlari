@@ -71,7 +71,14 @@ Yeni bir konu eklerken:
 4. Kod örneklerini mümkün olduğunca küçük ve açıklayıcı tutun.
 5. Kullanılan önemli kaynakları notun sonunda belirtin.
 
-Katkı kuralları ve içerik standartları için [CONTRIBUTING.md](CONTRIBUTING.md) dosyasına bakabilirsiniz.
+Her bölümün README dosyasında, o bölüm için planlanan konular ve durumları listelenir. ⬜ ile işaretli konulardan herhangi birini üstlenebilirsiniz.
+
+Başlamadan önce okunması gereken dosyalar:
+
+* [CONTRIBUTING.md](CONTRIBUTING.md) — katkı süreci ve içerik standartları
+* [SABLON.md](SABLON.md) — notların takip ettiği yapı
+* [TERIMLER.md](TERIMLER.md) — hangi terimin Türkçe, hangisinin İngilizce kullanıldığı
+* [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — topluluk davranış kuralları
 
 ## Lisans
 
