@@ -60,7 +60,10 @@ Amaç, metni İngilizce kelimelerle doldurmak değildir. Türkçesi varken İngi
 | debugging | hata ayıklama | |
 | emulator | emülatör | |
 | alignment | hizalama | |
+| padding | dolgu | hizalama için eklenen boşluk |
 | overflow | taşma | |
+| undefined behavior | tanımsız davranış | standardın tanımlamadığı davranış |
+| calling convention | çağrı kuralı | bkz. `ABI` |
 | lock | kilit | bkz. `spinlock` |
 | performance | performans | |
 | default | varsayılan | |
@@ -108,6 +111,9 @@ Bu terimler çevrilmez. Türkçe ek gerektiğinde kesme işareti kullanılır.
 | socket | ağ uç noktası | |
 | journaling | günlükleme | |
 | endianness | bayt sıralaması | |
+| ABI | ikili düzeydeki arayüz sözleşmesi | çağrı kuralını ve veri düzenini kapsar, kısaltmasıyla aranıyor |
+| freestanding | standart kütüphanesiz C ortamı | C standardının kendi terimi |
+| MMIO / port I/O | aygıt register'larına erişim yöntemleri | manual'daki adlarıyla kullanılır |
 
 ## Ek alma kuralları
 
