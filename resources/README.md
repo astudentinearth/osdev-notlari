@@ -9,7 +9,7 @@ Bir kaynak eklerken yalnızca bağlantıyı vermek yeterli değildir: kaynağın
 | Konu | Dosya | Durum |
 | --- | --- | --- |
 | Kitaplar | `kitaplar.md` | ⬜ |
-| Mimari manual'ları (Intel, AMD, ARM, RISC-V) | `manualler.md` | ⬜ |
+| Mimari manual'ları (Intel, AMD, ARM, RISC-V) | `manualler.md` | 🟡 |
 | Spesifikasyonlar (UEFI, ACPI, PCI, USB, RFC'ler) | `spesifikasyonlar.md` | ⬜ |
 | Makaleler ve akademik yayınlar | `makaleler.md` | ⬜ |
 | İncelenebilecek açık kaynak projeler | `projeler.md` | ⬜ |
