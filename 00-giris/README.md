@@ -9,7 +9,7 @@ Bu bölüm, sonraki bölümlerde anlatılan konuları denemek için gereken çal
 | Konu | Dosya | Durum |
 | --- | --- | --- |
 | OSDev nedir, neyi kapsar | [osdev-nedir.md](osdev-nedir.md) | ✅ |
-| Nereden başlanır: yol haritası | `yol-haritasi.md` | ⬜ |
+| Nereden başlanır: yol haritası | [yol-haritasi.md](yol-haritasi.md) | ✅ |
 | Ön gereksinimler (C, assembly, bilgisayar mimarisi) | `on-gereksinimler.md` | ⬜ |
 | Geliştirme ortamı kurulumu (Linux / WSL) | `gelistirme-ortami.md` | ⬜ |
 | Cross-compiler hazırlama (GCC, Clang) | `cross-compiler.md` | ⬜ |
