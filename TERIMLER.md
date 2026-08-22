@@ -114,6 +114,7 @@ Bu terimler çevrilmez. Türkçe ek gerektiğinde kesme işareti kullanılır.
 | ABI | ikili düzeydeki arayüz sözleşmesi | çağrı kuralını ve veri düzenini kapsar, kısaltmasıyla aranıyor |
 | freestanding | standart kütüphanesiz C ortamı | C standardının kendi terimi |
 | MMIO / port I/O | aygıt register'larına erişim yöntemleri | manual'daki adlarıyla kullanılır |
+| host / target | geliştirme yapılan makine ve hedeflenen sistem | cross-compiler bağlamında ikisi birlikte kullanılıyor |
 
 ## Ek alma kuralları
 
