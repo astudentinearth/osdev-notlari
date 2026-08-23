@@ -115,6 +115,12 @@ Bu terimler çevrilmez. Türkçe ek gerektiğinde kesme işareti kullanılır.
 | freestanding | standart kütüphanesiz C ortamı | C standardının kendi terimi |
 | MMIO / port I/O | aygıt register'larına erişim yöntemleri | manual'daki adlarıyla kullanılır |
 | host / target | geliştirme yapılan makine ve hedeflenen sistem | cross-compiler bağlamında ikisi birlikte kullanılıyor |
+| handler | bir interrupt, exception veya sinyali karşılayan kod | "işleyici" aranan bir terim değil, `interrupt handler` biçiminde geçiyor |
+| panic | kernel'in kurtarılamaz hatada durması | `kernel panic` yerleşik bir terim |
+| higher half | kernel'in sanal adres alanının üst yarısına yerleştirilmesi | çevirisi yerleşmemiş, yerleşim adı olarak aranıyor |
+| run queue | çalışmaya hazır process'lerin tutulduğu kuyruk | scheduler bağlamında bu adla geçiyor |
+| idle | işlemcinin yapacak iş olmadığında girdiği boşta durum | "boşta" tek başına yeterince belirli değil |
+| guard page | taşmayı yakalamak için haritalanmadan bırakılan sayfa | çevirisi yerleşmemiş |
 
 ## Ek alma kuralları
 
