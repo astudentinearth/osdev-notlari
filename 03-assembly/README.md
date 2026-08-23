@@ -10,7 +10,7 @@ Amaç assembly'yi baştan sona öğretmek değil, kernel yazarken ihtiyaç duyul
 | --- | --- | --- |
 | Assembly'e giriş: kernel'de nerede gerekir | `giris.md` | ⬜ |
 | Söz dizimi farkları: Intel (NASM) ve AT&T (GAS) | `sozdizimi.md` | ⬜ |
-| x86-64 register'ları | `registerlar.md` | ⬜ |
+| x86-64 register'ları | [registerlar.md](registerlar.md) | ✅ |
 | Adresleme modları | `adresleme-modlari.md` | ⬜ |
 | Sık kullanılan komutlar | `komutlar.md` | ⬜ |
 | Stack ve stack frame | `stack.md` | ⬜ |
