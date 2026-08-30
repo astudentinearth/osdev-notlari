@@ -13,7 +13,6 @@ Limine, FAT12/16/32 ve ISO9660 dosya sistemlerini destekler. Doğru  yapılandı
 - [Bootloader yazmak mı, hazır bootloader mı?](./bootloader-secimi.md)
 - Limine'ın sağladığı veri yapılarını anlayabilmek için C başlık dosyalarını (.h) okuyabilmelisiniz
 
-
 ## Kapsam
 
 Bu not öncelikli olarak x86-64 üzerinde Limine ile çalışmaya nasıl başlanacağını anlatmak üzere yazılmıştır. Diğer mimariler için kaynaklar bölümündeki bağlantıları kullanabilirsiniz.
@@ -25,6 +24,7 @@ Bu not öncelikli olarak x86-64 üzerinde Limine ile çalışmaya nasıl başlan
 ## Problem
 
 Önyükleme sürecinin birçok detayı vardır ve hedeflenen mimariye göre çok çeşitli farklılıklar içerebilir.  Bu farklılıklara birkaç örnek vermek gerekirse:
+
 - x86-64 Legacy BIOS sistemlerde önyükleme diskin ilk sektöründeki (Master Boot Record) kodun belli bir adrese yüklenir ve 16-bit Gerçek Mod'da çalışmaya başlar.<sup>[3,4]</sup>
 - x86-64 UEFI sistemlerde EFI sistem bölümündeki `.EFI` dosyaları çalıştırılır. Program 32-bit Korumalı Mod ya da 64-bit Long Mode'da çalışmaya başlar.<sup>[4]</sup>
 
@@ -35,7 +35,6 @@ Limine ve GNU GRUB gibi önyükleyiciler, kernel geliştiriclerini çok aşamal�
 ## Donanım seviyesinde
 
 Limine, erken ortamda donanımdaki çeşitli farklılıkların bir kısmını ilk günden ele alma ihtiyacımızı ortadan kaldırır ve bellek haritası gibi önemli yapılara ulaşmak için erişilebilir bir soyutlama katmanı sunar.
-
 
 ## Kernel tarafında (x86-64)
 
@@ -51,11 +50,12 @@ Eğer kernel'inizde C/C++ dillerini kullanıyorsanız, `memcpy`, `memset`, `memc
 
 ### Başlangıç ve temeller
 
-> Buradaki kod parçalarının tam halini https://github.com/Limine-Bootloader/limine-c-template-x86-64/tree/trunk deposunda bulabilirsiniz. Bu şablonu klonlayarak Limine ile geliştirmeye hemen başlayabilirsiniz, ama aşağıdaki açıklamaları okumanız tavsiye edilir.
+> Buradaki kod parçalarının tam halini <https://github.com/Limine-Bootloader/limine-c-template-x86-64/tree/trunk> deposunda bulabilirsiniz. Bu şablonu klonlayarak Limine ile geliştirmeye hemen başlayabilirsiniz, ama aşağıdaki açıklamaları okumanız tavsiye edilir.
 
 Kernel'iniz framebuffer, bellek haritası, RSDP, vb. gibi yapıları, [`limine.h`](https://github.com/Limine-Bootloader/limine-protocol/blob/trunk/include/limine.h) başlığında tanımlanan veri yapılarını kullanarak isteyebilir.
 
 Örneğin aşağıdaki şekilde bellek haritasını tanımladığınız değişken içine alabilirsiniz:
+
 ```c
 #include "limine.h" // bu başlığı doğrudan projenize kopyalayabilirsiniz
 
@@ -154,6 +154,7 @@ void kmain(void) {
 Script'in tam haline [buradan](https://github.com/Limine-Bootloader/limine-c-template-x86-64/blob/trunk/kernel/linker-scripts/x86_64.lds) ulaşabilirsiniz. Burada sadece önemli/anlamanız gereken kısımları (yukarıdan aşağı) açıklayacağız.
 
 Linker'dan x86_64 ELF formatında bir çıktı istiyoruz.
+
 ```ld
 OUTPUT_FORMAT(elf64-x86-64)
 ```
@@ -233,15 +234,14 @@ SECTIONS
 }
 ```
 
-### `limine.conf`
+### `limine.conf`<sup>[7][dokümantasyon](https://github.com/Limine-Bootloader/Limine/blob/v12.x/CONFIG.md)</sup>
 
 `timeout` değişkeni otomatik olarak kernel'i yüklemeden önce kaç saniye bekleneceğini belirler. Test ortamınızda başka bir işletim sistemi yoksa/boot menü kullanmanız gerekmiyorsa bunu düşürmeniz önerilir.
 
-`/Limine Template` menüde gösterilecek bir girdi tanımlar. 
+`/Limine Template` menüde gösterilecek bir girdi tanımlar.
 
 - `protocol` ile "limine" önyükleme protokolünü kullanmak istediğimizi belirtiyoruz. Bu ayarı kullanarak Linux ve Multiboot gibi protokolleri destekleyen işletim sistemlerini de yükleyebilirsiniz, ancak biz sadece limine protokolünü kullanacağız.
 - `path` ile kernelimizin bulunduğu yeri belirtiyoruz (birazdan gerçekten oraya koyacağız)
-
 
 ```conf
 timeout: 3
@@ -255,7 +255,6 @@ timeout: 3
 
 `limine-c-template` içindeki GNUmakefile ile projenizi derleyip çalıştırabilirsiniz. Sağlanan Makefile otomatik olarak Limine'ın derlenmiş bir dağıtımını indirir ve ISO görüntüsü oluşturur.
 
-
 ## Implementasyon notları
 
 Kernel'inizde birden çok önyükleme protokolünü destekleyebilirsiniz, ancak her protokolün sizi farklı bir durumda bırakabileceğinin farkında olmalısınız.
@@ -264,22 +263,26 @@ Limine'a ait veri tiplerini bütün kod tabanınıza sızdırmamanız fayda sağ
 
 Limine HHDM ile sayfa tablolarınızı ayarlar, ancak hangi bellek alanlarının haritalandırıldığı protokolün sürümleri arasında değişiklik gösterebildiği için kendi sayfa tablolarınızı oluşturmanız önerilir.
 
-
 ## Sık yapılan hatalar
 
 - Önyükleme katmanınına ait şeylerin kernel mantığınıza karışması. Almanız gereken verileri kendi tanımladığınız bir arayüz üzerinden alın. Limine protokolünün sürümleri arasında birçok değişiklik var.
-- Limine'ın sayfa tablolarına güvenmek. Limine'ın haritalandırdığı bellek alanları protokolün sürümleri arasında farklılık gösterir: Örneğin base revision 0 bütün bellek haritası alanları için sayfa tablosu oluşturuyordu. Revision 1 "Reserved" ve "Bad memory" alanlarını tablodan çıkardı. Revision 3 sadece kullanılabilir, framebuffer, kernel ve yeniden kazanılabilir alanlar için sayfa tabloları oluşturuyordu. Bu tip farklılıklar çalışırken sizi şüpheye düşürür, bu yüzden kullanacağınız alanları kendiniz haritalandırın ve sayfa tablolarınızı güvendiğiniz bir alanda saklayın.
+- Limine'ın sayfa tablolarına güvenmek. Limine'ın haritalandırdığı bellek alanları protokolün sürümleri arasında farklılık gösterir: Örneğin base revision 0 bütün bellek haritası alanları için sayfa tablosu oluşturuyordu. Revision 1 "Reserved" ve "Bad memory" alanlarını tablodan çıkardı. Revision 3 sadece kullanılabilir, framebuffer, kernel ve yeniden kazanılabilir alanlar için sayfa tabloları oluşturuyordu. Bu tip farklılıklar çalışırken sizi şüpheye düşürür, bu yüzden kullanacağınız alanları kendiniz haritalandırın ve sayfa tablolarınızı güvendiğiniz bir alanda saklayın.<sup>[2:Base Revision Changes Summary]
 - Limine'ın veri yapılarına doğrudan bağımlı olmak. Bu yapılar protokol güncellendikçe değişebileceğinden kendi mantığınızı yazarken kullanmayın. Kısaca önyükleme işleriyle ilgilenen dosya haricinde `#include <limine.h>` bulundurmamaya çalışın.
 - Response'lara `NULL` kontrolü uygulamamak. Her isteğe her platformda yanıt geleceğinin garantisi yoktur.
 
 ## İlgili notlar
 
-- [İlgili not](../XX-bolum/dosya.md)
+- [Bootloader yazmak mı, hazır bootloader mı?](./bootloader-secimi.md)
+- [Boot sürecine genel bakış](./boot-sureci.md)
+- [BIOS ve legacy boot](./bios.md)
+- [MBR ve boot sector](./mbr.md)
 
 ## Kaynaklar
+
 - [1] [Limine-Bootloader/Limine:README.md](https://github.com/Limine-Bootloader/Limine/blob/v12.x/README.md)
 - [2] [Limine Boot Protocol spesifikasyonu](https://github.com/Limine-Bootloader/limine-protocol/blob/trunk/PROTOCOL.md)
-- [3] https://en.wikipedia.org/wiki/Master_boot_record / Erişim: 28 Ağustos 2026 00:18 (UTC+3)
-- [4] https://osdev.wiki/wiki/Boot_Sequence / Erişim: 28 Ağustos 2026 12:21 (UTC+3)
-- [5] https://wiki.osdev.org/Higher_Half_Kernel / Erişim: 28 Ağustos 2026 00:45 (UTC+3)
-- [6] https://github.com/Limine-Bootloader/limine-c-template-x86-64
+- [3] <https://en.wikipedia.org/wiki/Master_boot_record> / Erişim: 28 Ağustos 2026 00:18 (UTC+3)
+- [4] <https://osdev.wiki/wiki/Boot_Sequence> / Erişim: 28 Ağustos 2026 12:21 (UTC+3)
+- [5] <https://wiki.osdev.org/Higher_Half_Kernel> / Erişim: 28 Ağustos 2026 00:45 (UTC+3)
+- [6] <https://github.com/Limine-Bootloader/limine-c-template-x86-64>
+- [7] <https://github.com/Limine-Bootloader/Limine/blob/v12.x/CONFIG.md>
