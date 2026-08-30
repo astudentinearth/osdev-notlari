@@ -216,7 +216,7 @@ SECTIONS
 
   /* bu alanda henüz bir değer atamadığınız (0 ya da NULL olan) */
   /* statik değişkenleriniz bulunur. bu alanlar için program yükleyicisi */
-  /* hafızadan alan ayırır, 0'lar yürütülebilir çıktınıza dahil edilmez. */
+  /* bellekten alan ayırır, 0'lar yürütülebilir çıktınıza dahil edilmez. */
   /* büyük bir diziniz varsa onlar çıktıda yer kaplamaz, ancak yüklendikten */
   /* sonra bellekte yer kaplar. */
   .bss : {
