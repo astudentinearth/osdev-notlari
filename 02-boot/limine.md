@@ -2,7 +2,7 @@
 
 **Limine**, çeşitli mimari ve önyükleme protokollerini destekleyen açık kaynaklı bir önyükleyicidir. `IA-32`, `x86-64`, `arm64`, `riscv64` ve `loongarch64` mimarileriyle birlikte Linux, Limine, Multiboot (1 ve 2) ve Chainloading protokollerini destekler. Aynı zamanda Limine önyükleme protokolünün referans implementasyonudur.<sup>[1]</sup>
 
-**Limine önyükleme protokolü** ise birden çok küçük sonlu 64-bit mimariyi destekleyen önyükleme spesifikasyonudur. `x86-64`, `aarch64`, `riscv64` ve `loongarch64` mimarilerini destekler.<sup>[2]</sup> Spesifikasyonun tam haline [buradan](https://github.com/Limine-Bootloader/limine-protocol/blob/trunk/PROTOCOL.md) ulaşabilirsiniz, burada yer verilmeyen bütün özellikler orada mevcut.<sup>[2]</sup>
+**Limine önyükleme protokolü** ise birden çok 64-bit mimariyi destekleyen önyükleme spesifikasyonudur. `x86-64`, `aarch64`, `riscv64` ve `loongarch64` mimarilerini destekler.<sup>[2]</sup> Spesifikasyonun tam haline [buradan](https://github.com/Limine-Bootloader/limine-protocol/blob/trunk/PROTOCOL.md) ulaşabilirsiniz, burada yer verilmeyen bütün özellikler orada mevcut.<sup>[2]</sup>
 
 Limine, FAT12/16/32 ve ISO9660 dosya sistemlerini destekler. Doğru  yapılandırıldığında kernel çalıştırılabilir dosyanızı bu dosya sistemlerinden yükleyerek başlangıçta büyük kolaylık sağlar.<sup>[1]</sup>
 
@@ -102,7 +102,7 @@ Devam etmeden önce giriş noktamızı da oluşturalım:
 
 // "halt and catch fire" fonksiyonu bir
 // interrupt gelinceye kadar yürütmeyi
-// durdurur. döngü kullanarak her inbterrupt'tan
+// durdurur. döngü kullanarak her interrupt'tan
 // sonra da beklemeye devam etmesi sağlanır.
 //
 // buraya interrupt'ları ayarlamadan girmek
